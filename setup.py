@@ -1,25 +1,18 @@
 import telebot
 import requests
-import re
 from bs4 import BeautifulSoup
 
 TOKEN = '6991880970:AAEGY_2pgNijHCHbkw2BRQlWUO0uxF432oA'  # Replace with your actual bot token
 
 bot = telebot.TeleBot(TOKEN)
 
-button1 = telebot.types.InlineKeyboardButton(text="⚡Powered by", url='https://t.me/heyboy2004')
-button2 = telebot.types.InlineKeyboardButton(text="🔗 Gdrive channel", url='https://t.me/GdtotLinkz')
-button3 = telebot.types.InlineKeyboardButton(text="📜 Status channel", url='https://t.me/TmvStatus')
-keyboard = telebot.types.InlineKeyboardMarkup().add(button1, button2, button3)
-keyboard2 = telebot.types.InlineKeyboardMarkup().add(button2, button3)
-
 @bot.message_handler(commands=['start'])
 def random_answer(message):
-    bot.send_message(chat_id=message.chat.id, text=f"Hello👋 \n\n🗳Get latest Movies from 1Tamilmv\n\n⚙️*How to use me??*🤔\n\n✯ Please Enter */view* command and you'll get magnet link as well as link to torrent file 😌\n\nShare and Support💝", parse_mode='Markdown', reply_markup=keyboard)
+    bot.send_message(chat_id=message.chat.id, text=f"Hello👋 \n\n🗳Get latest Movies from 1Tamilmv\n\n⚙️*How to use me??*🤔\n\n✯ Please Enter */view* command and you'll get magnet link as well as link to torrent file 😌\n\nShare and Support💝", parse_mode='Markdown')
 
 @bot.message_handler(commands=['view'])
 def start(message):
-    bot.send_message(message.chat.id, text="*Please wait for 10 seconds*", parse_mode='Markdown')
+    bot.send_message(message.chat.id, text="*Please wait...*", parse_mode='Markdown')
     tamilmv()
     bot.send_message(chat_id=message.chat.id, text="Select a Movie from the list 🙂 :", reply_markup=makeKeyboard(), parse_mode='HTML')
 
@@ -30,8 +23,7 @@ def callback_query(call):
         if call.data == f"{key}":
             if movie_list[int(call.data)] in real_dict.keys():
                 for i in real_dict[movie_list[int(call.data)]]:
-                    bot.send_message(call.message.chat.id, text=f"{i}\n\n🤖 @Tamilmv_movie_bot", parse_mode='markdown')
-    bot.send_message(call.message.chat.id, text=f"🌐 Please Join Our Status Channel", parse_mode='markdown', reply_markup=keyboard2)
+                    bot.send_message(call.message.chat.id, text=f"{i}", parse_mode='markdown')
 
 def makeKeyboard():
     markup = telebot.types.InlineKeyboardMarkup()
