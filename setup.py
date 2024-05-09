@@ -58,7 +58,7 @@ def tamilmv():
         torrent_links = [a['href'] for a in soup.find_all('a', {"data-fileext": "torrent", 'href': True})]
         titles = [span.text[19:-8] for span in soup.find_all('span') if span.text.endswith('torrent')]
         for p in range(len(mag_links)):
-            real_dict.setdefault(movie_list[i], []).append(f"*{titles[p]}* -->\n🧲 `{mag_links[p]}`\n🗒️->Torrent file")
+            real_dict.setdefault(movie_list[i], []).append(f"*{titles[p]}* -->\n🧲 `{mag_links[p]}`")
 
 def main():
     bot.infinity_polling(timeout=10, long_polling_timeout=5)
