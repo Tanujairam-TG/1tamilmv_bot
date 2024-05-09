@@ -38,7 +38,7 @@ def callback_query(call):
             print("HI")
             if movie_list[int(call.data)] in real_dict.keys():
                 for i in real_dict[movie_list[int(call.data)]]:                  
-                  bot.send_message(call.message.chat.id,text=f"{i}\n\n🤖 @Tamilmv\_movie\_bot",parse_mode='markdown')
+                  bot.send_message(call.message.chat.id, text=f"{i}\n\n🤖 @Tamilmv_movie_bot", parse_mode='markdown')
                   print(real_dict[movie_list[int(call.data)]])
     bot.send_message(call.message.chat.id,text=f"🌐 Please Join Our Status Channel",parse_mode='markdown',reply_markup=keyboard2)
       
